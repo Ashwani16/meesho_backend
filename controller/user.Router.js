@@ -9,7 +9,7 @@ userRouter.post("/register",async (req,res)=>{
     try {
         const obj=req.body;
         let check= await UserModel.find({phoneNo:obj.phoneNo})
-        if(check){
+        if(check.phoneNo){
             res.end("user already registered")
         }else{
             const user=new UserModel(obj);
