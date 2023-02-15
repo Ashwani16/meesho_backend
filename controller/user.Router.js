@@ -8,20 +8,19 @@ const userRouter=Router();
 userRouter.post("/register",async (req,res)=>{
     try {
         const obj=req.body;
+
         let check= await UserModel.findOne({phoneNo:obj.phoneNo})
         // console.log(check.phoneNo)
         // console.log(check)
 
         if(check.phoneNo){
             res.end("user already registered")
-        }else{
-            const user=new UserModel(obj);
-            await user.save(obj) 
-            res.send("user Registered")
         }
         
     } catch (error) {
-        res.send("Error in registration")
+        const user=new UserModel(obj);
+        await user.save(obj) 
+        res.send("user Registered")
     }
 })
 userRouter.post("/login",async (req,res)=>{
