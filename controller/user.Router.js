@@ -14,7 +14,7 @@ userRouter.post("/register",async (req,res)=>{
 
         if(check.phoneNo){
             res.status(400).send({
-                message: 'user already registered'
+                message: 'user already registered !!'
              })
         }
         
