@@ -6,9 +6,8 @@ require('dotenv').config()
 const userRouter=Router();
 
 userRouter.post("/register",async (req,res)=>{
+    const obj=req.body;
     try {
-        const obj=req.body;
-
         let check= await UserModel.findOne({phoneNo:obj.phoneNo})
         // console.log(check.phoneNo)
         // console.log(check)
